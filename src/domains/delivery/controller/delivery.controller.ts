@@ -6,14 +6,15 @@ export const deliveryRouter = Router();
 
 const deliveryService: DeliveryService = new DeliveryServiceImpl();
 
-deliveryRouter.post('/delivery', async (req, res) => {
-    const {deliveryState} = req.body;
-    const delivery = await deliveryService.changeDeliveryState(deliveryState);
-    res.send(delivery);
+deliveryRouter.post('/', async (req, res) => {
+    const {deliveryId, deliveryStatus} = req.body;
+    const delivery = await deliveryService.changeDeliveryState(deliveryStatus);
+    console.log(deliveryId);
+    console.log(deliveryStatus);
+    res.json({message: 'Delivery state changed'});
 });
 
-deliveryRouter.get('/:delivery_id', async (req, res) => {
-    const {delivery_id} = req.params;
-    const delivery = await deliveryService.getDeliveryById(delivery_id);
-    res.send('Delivery retrieved');
+deliveryRouter.get('/', async (req, res) => {
+    // const delivery = await deliveryService.getDeliveryById(delivery_id);
+    res.json({data: ['191838045', '2358131', '34313143']});
 });
