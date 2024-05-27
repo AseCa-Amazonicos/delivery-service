@@ -7,10 +7,10 @@ export const deliveryRouter = Router();
 const deliveryService: DeliveryService = new DeliveryServiceImpl();
 
 deliveryRouter.post('/', async (req, res) => {
-    const {deliveryId, deliveryStatus} = req.body;
-    const delivery = await deliveryService.changeDeliveryState(deliveryStatus);
+    const {deliveryId, deliveryState} = req.body;
+    const delivery = await deliveryService.changeDeliveryState(deliveryState);
     console.log(deliveryId);
-    console.log(deliveryStatus);
+    console.log(deliveryState);
     res.json({message: 'Delivery state changed'});
 });
 
